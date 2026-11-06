@@ -1,15 +1,15 @@
 # Unsupervised Classification of Character Fonts Using K-Means Clustering
 
 Clustering 20×20 pixel images of characters from three distinct fonts, with
-dimensionality reduction and a from-scratch analysis of cluster quality against
-the true font labels. Dimensionality reduction (PCA via eigendecomposition and
-SVD) and all cluster-quality metrics are implemented directly with NumPy;
+dimensionality reduction and an analysis of cluster quality against
+the true font labels from scratch. Dimensionality reduction (PCA via eigendecomposition and
+SVD) and all cluster quality metrics are implemented directly with NumPy;
 scikit-learn is used only for the K-means fit itself.
 
 ## Overview
 
 The goal is to test how well **unsupervised** K-means clustering can recover
-three known font classes — **CURLZ**, **JOKERMAN**, and **ONYX** — from raw
+three known font classes, **CURLZ**, **JOKERMAN**, and **ONYX**, from raw
 pixel data alone, without using the labels during clustering. The labels are
 held back and used only afterward, to measure how pure the discovered clusters
 turned out to be.
@@ -21,7 +21,7 @@ turned out to be.
 - **Clustering:** K-means swept over k = 1…20, then analyzed at the k matching
   the three true classes.
 - **Evaluation:** cluster dispersion, centroids, radii, inter-cluster
-  separability, and per-class purity vs. the true fonts.
+  separability, and per class purity vs. the true fonts.
 
 ## Method
 
@@ -29,8 +29,8 @@ turned out to be.
    non-pixel metadata removed, restricted to bold/non-italic cases) and
    combined into a single labeled matrix (`DATA.csv`).
 2. **Standardization** — Features are z-scored to mean 0 / standard deviation 1,
-   and a correlation matrix is computed to examine the most- and
-   least-correlated pixel pairs.
+   and a correlation matrix is computed to examine the most and
+   least correlated pixel pairs.
 3. **Dimensionality reduction** — PCA is performed **from scratch** via
    eigendecomposition of the correlation matrix; the percentage of variance
    explained (PVE) is used to choose the number of components retained. The
@@ -79,6 +79,6 @@ runs without them.)
 
 This project was developed for a graduate course in mathematical machine
 learning. The character-image data comes from the UCI Character Font Images
-dataset. The emphasis is on implementing the underlying mathematics —
+dataset. The emphasis is on implementing the underlying mathematics,
 standardization, PCA by eigendecomposition and SVD, and the clustering-quality
-metrics — directly, rather than treating them as black boxes.
+metrics directly.
